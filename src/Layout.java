@@ -284,8 +284,6 @@ public class Layout extends JFrame {
         gridPanel2.add(button3);
 
         gridPanel2.add(new JLabel(""));
-        /*usage.setToolTipText("<html>bal klikk: kártya elforgatása 90 fokkal" + "<br> jobb klikk: kártya megfordítása" +
-                             "<br> húzd és vidd: kártyák cseréje" + "<html>");*/
         gridPanel2.add(usage);
         gridPanel2.add(usageDesc);
 
