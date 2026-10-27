@@ -44,7 +44,7 @@ jobs:
       - name: Create JAR
         shell: bash
         run: |
-          jar cf deploy/rubik-tangle.jar -C build/classes .
+          jar cf deploy/rubik-tangle.jar Layout -C build/classes .
 
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v7
