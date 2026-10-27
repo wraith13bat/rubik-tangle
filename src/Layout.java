@@ -10,6 +10,7 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Font;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.PointerInfo;
@@ -31,6 +32,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 
 public class Layout extends JFrame {
@@ -357,6 +359,30 @@ public class Layout extends JFrame {
 
 
     public static void main(String[] args) {
+
+        try {
+    UIManager.setLookAndFeel(
+        UIManager.getCrossPlatformLookAndFeelClassName()
+    );
+
+    Font font = new Font("SansSerif", Font.PLAIN, 12);
+
+    UIManager.put("Label.font", font);
+    UIManager.put("Button.font", font);
+    UIManager.put("ToggleButton.font", font);
+    UIManager.put("CheckBox.font", font);
+    UIManager.put("RadioButton.font", font);
+    UIManager.put("Menu.font", font);
+    UIManager.put("MenuItem.font", font);
+    UIManager.put("TabbedPane.font", font);
+    UIManager.put("Table.font", font);
+    UIManager.put("TextField.font", font);
+    UIManager.put("TextArea.font", font);
+    UIManager.put("ComboBox.font", font);
+} catch (Exception e) {
+    e.printStackTrace();
+}
+        
         Layout frame = new Layout();
 
         frame.setVisible(true);
