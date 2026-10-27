@@ -15,10 +15,10 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Java 8
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '8'
@@ -48,7 +48,7 @@ jobs:
           jar cf deploy/rubik-tangle.jar -C build/classes .
 
       - name: Upload JAR artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: rubik-tangle-jar
           path: deploy/rubik-tangle.jar
