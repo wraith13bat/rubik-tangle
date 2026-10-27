@@ -44,11 +44,11 @@ jobs:
       - name: Create JAR
         shell: bash
         run: |
-          mkdir -p deploy
-          printf 'Main-Class: Layout\n\n' > deploy/MANIFEST.MF
+          mkdir -p deploy build/classes/tangle
+          cp -R images build/classes/tangle/
+          printf 'Main-Class: tangle.Layout\n\n' > deploy/MANIFEST.MF
           jar cfm deploy/rubik-tangle.jar deploy/MANIFEST.MF \
             -C build/classes . \
-            -C . tangle/images
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v7
         with:
