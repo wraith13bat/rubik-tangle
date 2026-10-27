@@ -48,7 +48,7 @@ jobs:
           printf 'Main-Class: Layout\n\n' > deploy/MANIFEST.MF
           jar cfm deploy/rubik-tangle.jar deploy/MANIFEST.MF \
             -C build/classes . \
-            -C . tangle/images
+            -C images tangle/images
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v7
         with:
