@@ -1,0 +1,56 @@
+
+name: Build Rubik Tangle
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+
+      - name: Compile Java sources
+        shell: bash
+        run: |
+          set -e
+
+          mkdir -p build/classes deploy
+
+          find src -type f -name '*.java' > build/sources.txt
+
+          if [ ! -s build/sources.txt ]; then
+            echo "No Java source files found in src/"
+            exit 1
+          fi
+
+          javac -encoding UTF-8 \
+            -classpath "lib/*" \
+            -d build/classes \
+            @build/sources.txt
+
+      - name: Create JAR
+        shell: bash
+        run: |
+          jar cf deploy/rubik-tangle.jar -C build/classes .
+
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rubik-tangle-jar
+          path: deploy/rubik-tangle.jar
+          if-no-files-found: error
+          retention-days: 30
