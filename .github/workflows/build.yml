@@ -48,8 +48,9 @@ jobs:
         run: |
           mkdir -p deploy build/classes/tangle
           cp -R images build/classes/tangle/
-          printf 'Main-Class: tangle.Layout\n\n' > deploy/MANIFEST.MF
-          jar cfm deploy/rubik-tangle.jar deploy/MANIFEST.MF \
+          #printf 'Main-Class: tangle.Layout\n\n' > deploy/MANIFEST.MF
+          #cp MANIFEST.MF deploy/MANIFEST.MF
+          jar cfm deploy/rubik-tangle.jar MANIFEST.MF \
             -C build/classes .
       - name: Upload JAR artifact
         uses: actions/upload-artifact@v7
