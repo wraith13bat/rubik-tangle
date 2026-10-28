@@ -2,6 +2,8 @@ name: Build Rubik Tangle
 
 on:
   push:
+      tags:
+        - 'v*'
   pull_request:
   workflow_dispatch:
 
