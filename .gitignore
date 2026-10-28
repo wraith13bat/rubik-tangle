@@ -12,6 +12,7 @@
 
 # Package Files #
 *.jar
+!deploy/rubik-tangle.jar
 *.war
 *.nar
 *.ear
